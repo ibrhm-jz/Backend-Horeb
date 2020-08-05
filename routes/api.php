@@ -16,6 +16,9 @@ Route::post('/registro', 'miembros@register');
 Route::post('/login', 'Login@login');
 
 
+
+//---------------------Empresa-------------------
+
 Route::get('/empresa', 'EmpresaController@show', function (Request $request) {
     return $request->Empresa();
 });
@@ -26,7 +29,7 @@ Route::put('/actualizar-empresa/{id}', 'EmpresaController@update', function (Req
 
 
 
-//------------Productos---------------
+//---------------------Productos-------------------
 Route::post('/registro-producto', 'ProductosController@register');
 Route::get('/productos', 'ProductosController@show', function (Request $request) {
     return $request->Productos();
@@ -35,3 +38,14 @@ Route::put('/actualizar-producto/{id}', 'ProductosController@update', function (
     return $request->Productos();
 });
 Route::delete('borrar-producto/{id}', 'ProductosController@destroy');
+
+
+//--------------------CLientes---------------------
+Route::post('/registro-cliente', 'ClientesController@register');
+Route::put('/actualizar-cliente/{id}', 'ClientesController@update', function (Request $request) {
+    return $request->Clientes();
+});
+Route::get('/cliente', 'ClientesController@show', function (Request $request) {
+    return $request->Clientes();
+});
+Route::delete('borrar-cliente/{id}', 'ClientesController@destroy');

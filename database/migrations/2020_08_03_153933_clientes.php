@@ -19,7 +19,7 @@ class Clientes extends Migration
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('direccion');
-            $table->integer('telefono');
+            $table->string('telefono');
             $table->string('correo');
             $table->string('empresa');              
             $table->integer('users_id')->unsigned();            

@@ -11,7 +11,7 @@ class Clientes extends Model
   
     
     protected $fillable = [
-        'nombres','apellidos','direccion', 'telefono', 'correo','empresa','user_id'
+        'nombres','apellidos','direccion', 'telefono', 'correo','empresa','users_id'
     ];
 
     public function getJWTIdentifier()
