@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Productos extends Model
 {
     protected $fillable = [
-        'nombre','tipo','medida', 'descripcion', 'precio_unitario'
+        'id','nombre','tipo','medida', 'descripcion', 'precio_unitario'
     ];
     public function getJWTIdentifier()
     {

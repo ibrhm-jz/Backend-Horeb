@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-class miembros extends Controller
+class MiembrosController extends Controller
 {
     public function register(Request $request) {
         $usuario = new User();
@@ -13,8 +13,7 @@ class miembros extends Controller
         $usuario->password = bcrypt($request->password);
         $usuario->tipo_usuario = $request->tipo_usuario;
         $usuario->save();
-        $id = $usuario->id;
-        printf($id);
+        return $usuario;
     
     }
 }

@@ -14,7 +14,7 @@ class Miembros extends Migration
     protected $table = "miembros";
     public function up()
     {
-        Schema::create('mimbros', function (Blueprint $table) {
+        Schema::create('miembros', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombres');
             $table->string('apellidos');  

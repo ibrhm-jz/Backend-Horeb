@@ -3,17 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 
-class Clientes extends Model
+class Entregas extends Model
 {
-    use Notifiable;
-  
-    
     protected $fillable = [
-        'id','nombres','apellidos','direccion', 'telefono', 'correo','empresa','users_id'
+        'id','lugar_entrega','fecha_entrega', 'ubicacion_entrega', 'statys_entrega','descripcion','responsable_entrega',
+        'miembro_id'
     ];
-
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -22,6 +18,4 @@ class Clientes extends Model
     {
         return [];
     }
-    
-    //
 }

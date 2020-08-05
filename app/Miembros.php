@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Miembros extends Model
 {
     protected $fillable = [
-        'nombres','apellidos', 'telefono', 'correo','user_id'
+        'id','nombres','apellidos', 'telefono', 'correo','user_id'
     ];
     public function getJWTIdentifier()
     {

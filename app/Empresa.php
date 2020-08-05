@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Empresa extends Model
 {
     protected $fillable = [
-        'nombre','clabe_interbancaria','rfc','correo'
+        'id','nombre','clabe_interbancaria','rfc','correo'
     ];
     public function getJWTIdentifier()
     {

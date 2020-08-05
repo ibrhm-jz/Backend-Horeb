@@ -24,7 +24,7 @@ class Ventas extends Migration
             $table->string('descripcion');   
             $table->string('total');   
             $table->integer('empresa_id')->unsigned();            
-            $table->foreign('empresa_id')->references('id')->on('empresa');
+            $table->foreign('empresa_id')->references('id')->on('empresas');
             $table->timestamps();
             
         });
