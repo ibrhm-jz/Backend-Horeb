@@ -20,6 +20,18 @@ class EmpresaController extends Controller
         printf($id);
        
     }
+
+    public function update(Request $request, $id)
+    {
+        $empresa = Empresa::find($id);
+        $empresa->nombre = $request->nombre;
+        $empresa->clabe_interbancaria = $request->clabe_interbancaria;
+        $empresa->rfc = $request->rfc;
+        $empresa->correo = $request->correo;
+        $empresa->update();
+        return $empresa;
+    }
+
     public function show(){
         $empresa = Empresa::all();
         return $empresa;
