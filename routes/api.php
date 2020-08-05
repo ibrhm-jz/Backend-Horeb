@@ -12,11 +12,14 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('/registro', 'miembros@register');
+
 Route::post('/login', 'Login@login');
 
-
-
+//---------------------Miembros-------------------
+Route::post('/registro', 'MiembrosController@register');
+Route::get('/miembro/{id}', 'MiembrosController@show', function (Request $request) {
+    return $request->Miembros();
+});
 //---------------------Empresa-------------------
 
 Route::get('/empresa', 'EmpresaController@show', function (Request $request) {
@@ -49,3 +52,13 @@ Route::get('/cliente', 'ClientesController@show', function (Request $request) {
     return $request->Clientes();
 });
 Route::delete('borrar-cliente/{id}', 'ClientesController@destroy');
+
+//--------------------Entregas---------------------
+Route::post('/registro-entrega', 'EntregasController@register');
+Route::put('/actualizar-entrega/{id}', 'EntregasController@update', function (Request $request) {
+    return $request->Entregas();
+});
+Route::get('/entregas', 'EntregasController@show', function (Request $request) {
+    return $request->Entregas();
+});
+Route::delete('borrar-entrega/{id}', 'EntregasController@destroy');
