@@ -13,8 +13,10 @@ class MiembrosController extends Controller
         $usuario->email = $request->email;
         $usuario->password = bcrypt($request->password);
         $usuario->tipo_usuario = $request->tipo_usuario;
-        $id = $usuario->id;
         $usuario->save();
+        $id = $usuario->id;
+        printf($id);
+       
         $miembros = new Miembros();
         $miembros->nombres = $request->nombres;
         $miembros->apellidos = $request->apellidos;
@@ -22,7 +24,7 @@ class MiembrosController extends Controller
         $miembros->correo = $request->correo;
         $miembros->user_id = $id;
         $miembros->save();   
-        return $miembros + $usuario;
+        return $miembros;
     
     }
 
