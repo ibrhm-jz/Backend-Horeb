@@ -15,6 +15,7 @@ class EmpresaController extends Controller
         $empresa->clabe_interbancaria =$request->clabe_interbancaria;
         $empresa->rfc = $request->rfc;
         $empresa->correo = $request->correo;
+        $empresa->direccion = $request->direccion;
         $empresa->save();
         $id = $empresa->id;
         printf($id);

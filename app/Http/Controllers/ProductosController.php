@@ -15,6 +15,7 @@ class ProductosController extends Controller
         $productos->medida = $request->medida;
         $productos->descripcion = $request->descripcion;
         $productos->precio_unitario = $request->precio_unitario;
+        $productos->cantidad_existencia = $request->cantidad_existencia;
         $productos->save();
         $id = $productos->id;
         printf($id);
@@ -30,6 +31,7 @@ class ProductosController extends Controller
         $productos->medida = $request->medida;
         $productos->descripcion = $request->descripcion;
         $productos->precio_unitario = $request->precio_unitario;
+        $productos->cantidad_existencia = $request->cantidad_existencia;
         $productos->update();
         return $productos;
     }

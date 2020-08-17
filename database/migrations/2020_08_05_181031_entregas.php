@@ -23,7 +23,7 @@ class Entregas extends Migration
             $table->string('descripcion');
             $table->string('responsable_entrega');    
             $table->integer('miembro_id')->unsigned();            
-            $table->foreign('miembro_id')->references('id')->on('miembros');
+            $table->foreign('miembro_id')->references('id')->on('users');
             $table->timestamps();
             
         });

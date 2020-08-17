@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', 'Login@login');
 
-//---------------------Miembros-------------------
-Route::post('/registro', 'MiembrosController@register');
-Route::get('/miembro/{id}', 'MiembrosController@show', function (Request $request) {
-    return $request->Miembros();
+//---------------------Users-------------------
+Route::post('/registro', 'UsersController@register');
+Route::get('/user/{id}', 'UsersController@show', function (Request $request) {
+    return $request->Users();
 });
 //---------------------Empresa-------------------
 
@@ -62,3 +62,6 @@ Route::get('/entregas', 'EntregasController@show', function (Request $request) {
     return $request->Entregas();
 });
 Route::delete('borrar-entrega/{id}', 'EntregasController@destroy');
+
+//--------------------ventas--------------------
+Route::post('/registro-ventas', 'VentasController@register');

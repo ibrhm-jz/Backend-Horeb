@@ -21,7 +21,8 @@ class Productos extends Migration
             $table->string('tipo');
             $table->string('medida');
             $table->string('descripcion');
-            $table->float('precio_unitario');         
+            $table->float('precio_unitario');  
+            $table->float('cantidad_existencia');          
             $table->timestamps();
             
         });

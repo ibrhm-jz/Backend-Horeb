@@ -20,6 +20,7 @@ class Empresa extends Migration
             $table->string('clabe_interbancaria');
             $table->string('rfc');
             $table->string('correo');
+            $table->string('direccion');
             $table->timestamps();
             
         });
