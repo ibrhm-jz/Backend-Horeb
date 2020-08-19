@@ -24,4 +24,10 @@ class UsersController extends Controller
         $usuario = User::find($id);
         return $usuario;
     }
+
+    public function buscarUser(Request $request){
+        $usuario = User::select('users.*')->where('nombres','like',"%$request->nombre%")->get();
+        return $usuario;
+
+    }
 }

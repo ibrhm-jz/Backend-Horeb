@@ -10,7 +10,7 @@ class ClientesController extends Controller
 
     public function register(Request $request) {
         $clientes = new Clientes();
-        $clientes->nombres = $request->nombre;
+        $clientes->nombres = $request->nombres;
         $clientes->apellidos =$request->apellidos;
         $clientes->direccion = $request->direccion;
         $clientes->telefono = $request->telefono;
@@ -46,5 +46,11 @@ class ClientesController extends Controller
     public function show(){
         $clientes = Clientes::all();
         return $clientes;
+    }
+
+    public function buscarClientes(Request $request){
+        $clientes = Clientes::select('clientes.*')->where('nombres','like',"%$request->nombre%")->get();
+        return $clientes;
+
     }
 }

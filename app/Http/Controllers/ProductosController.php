@@ -14,6 +14,7 @@ class ProductosController extends Controller
         $productos->tipo =$request->tipo;
         $productos->medida = $request->medida;
         $productos->descripcion = $request->descripcion;
+        $productos->categoria = $request->categoria;
         $productos->precio_unitario = $request->precio_unitario;
         $productos->cantidad_existencia = $request->cantidad_existencia;
         $productos->save();
@@ -30,6 +31,7 @@ class ProductosController extends Controller
         $productos->tipo = $request->tipo;
         $productos->medida = $request->medida;
         $productos->descripcion = $request->descripcion;
+        $productos->categoria = $request->categoria;
         $productos->precio_unitario = $request->precio_unitario;
         $productos->cantidad_existencia = $request->cantidad_existencia;
         $productos->update();
@@ -44,5 +46,12 @@ class ProductosController extends Controller
         $producto = Productos::find($id);
         $producto->delete();
         print('se borro');
+    }
+
+
+    public function buscarProductos(Request $request){
+        $producto = Productos::select('productos.*')->where('nombre','like',"%$request->nombre%")->get();
+        return $producto;
+
     }
 }
