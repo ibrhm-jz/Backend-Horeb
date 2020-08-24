@@ -21,51 +21,51 @@ Route::get('/user/{id}', 'UsersController@show', function (Request $request) {
     return $request->Users();
 });
 
-Route::post('/buscar-empleado', 'UsersController@buscarUser');
+Route::middleware('jwt.auth:api')->post('/buscar-empleado', 'UsersController@buscarUser');
 //---------------------Empresa-------------------
 
-Route::get('/empresa', 'EmpresaController@show', function (Request $request) {
+Route::middleware('jwt.auth:api')->get('/empresa', 'EmpresaController@show', function (Request $request) {
     return $request->Empresa();
 });
-Route::post('/registro-empresa', 'EmpresaController@register');
-Route::put('/actualizar-empresa/{id}', 'EmpresaController@update', function (Request $request) {
+Route::middleware('jwt.auth:api')->post('/registro-empresa', 'EmpresaController@register');
+Route::middleware('jwt.auth:api')->put('/actualizar-empresa/{id}', 'EmpresaController@update', function (Request $request) {
     return $request->Empresa();
 });
 
 
 
 //---------------------Productos-------------------
-Route::post('/registro-producto', 'ProductosController@register');
-Route::post('/buscar-producto', 'ProductosController@buscarProductos');
-Route::get('/productos', 'ProductosController@show', function (Request $request) {
+Route::middleware('jwt.auth:api')->post('/registro-producto', 'ProductosController@register');
+Route::middleware('jwt.auth:api')->post('/buscar-producto', 'ProductosController@buscarProductos');
+Route::middleware('jwt.auth:api')->get('/productos', 'ProductosController@show', function (Request $request) {
     return $request->Productos();
 });
-Route::put('/actualizar-producto/{id}', 'ProductosController@update', function (Request $request) {
+Route::middleware('jwt.auth:api')->put('/actualizar-producto/{id}', 'ProductosController@update', function (Request $request) {
     return $request->Productos();
 });
-Route::delete('borrar-producto/{id}', 'ProductosController@destroy');
+Route::middleware('jwt.auth:api')->delete('borrar-producto/{id}', 'ProductosController@destroy');
 
 
 //--------------------CLientes---------------------
-Route::post('/registro-cliente', 'ClientesController@register');
-Route::put('/actualizar-cliente/{id}', 'ClientesController@update', function (Request $request) {
+Route::middleware('jwt.auth:api')->post('/registro-cliente', 'ClientesController@register');
+Route::middleware('jwt.auth:api')->put('/actualizar-cliente/{id}', 'ClientesController@update', function (Request $request) {
     return $request->Clientes();
 });
-Route::get('/cliente', 'ClientesController@show', function (Request $request) {
+Route::middleware('jwt.auth:api')->get('/cliente', 'ClientesController@show', function (Request $request) {
     return $request->Clientes();
 });
-Route::delete('borrar-cliente/{id}', 'ClientesController@destroy');
-Route::post('/buscar-cliente', 'ClientesController@buscarClientes');
+Route::middleware('jwt.auth:api')->delete('borrar-cliente/{id}', 'ClientesController@destroy');
+Route::middleware('jwt.auth:api')->post('/buscar-cliente', 'ClientesController@buscarClientes');
 
 //--------------------Entregas---------------------
-Route::post('/registro-entrega', 'EntregasController@register');
-Route::put('/actualizar-entrega/{id}', 'EntregasController@update', function (Request $request) {
+Route::middleware('jwt.auth:api')->post('/registro-entrega', 'EntregasController@register');
+Route::middleware('jwt.auth:api')->put('/actualizar-entrega/{id}', 'EntregasController@update', function (Request $request) {
     return $request->Entregas();
 });
-Route::get('/entregas', 'EntregasController@show', function (Request $request) {
+Route::middleware('jwt.auth:api')->get('/entregas', 'EntregasController@show', function (Request $request) {
     return $request->Entregas();
 });
-Route::delete('borrar-entrega/{id}', 'EntregasController@destroy');
+Route::middleware('jwt.auth:api')->delete('borrar-entrega/{id}', 'EntregasController@destroy');
 
 //--------------------ventas--------------------
-Route::post('/registro-ventas', 'VentasController@register');
+Route::middleware('jwt.auth:api')->post('/registro-ventas', 'VentasController@register');
