@@ -53,4 +53,8 @@ class ClientesController extends Controller
         return $clientes;
 
     }
+    public function showId($id){
+        $clientes = Clientes::find($id);
+        return $clientes;
+    }
 }

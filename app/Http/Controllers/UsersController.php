@@ -30,4 +30,9 @@ class UsersController extends Controller
         return $usuario;
 
     }
+
+    public function showAll(){
+        $usuario = User::all();
+        return $usuario;
+    }
 }

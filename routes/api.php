@@ -21,6 +21,9 @@ Route::get('/user/{id}', 'UsersController@show', function (Request $request) {
     return $request->Users();
 });
 
+Route::get('/user', 'UsersController@showAll', function (Request $request) {
+    return $request->Users();
+});
 Route::middleware('jwt.auth:api')->post('/buscar-empleado', 'UsersController@buscarUser');
 //---------------------Empresa-------------------
 
@@ -52,6 +55,10 @@ Route::middleware('jwt.auth:api')->put('/actualizar-cliente/{id}', 'ClientesCont
     return $request->Clientes();
 });
 Route::middleware('jwt.auth:api')->get('/cliente', 'ClientesController@show', function (Request $request) {
+    return $request->Clientes();
+});
+
+Route::middleware('jwt.auth:api')->get('/cliente/{id}', 'ClientesController@showId', function (Request $request) {
     return $request->Clientes();
 });
 Route::middleware('jwt.auth:api')->delete('borrar-cliente/{id}', 'ClientesController@destroy');
