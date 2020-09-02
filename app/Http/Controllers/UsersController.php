@@ -35,4 +35,21 @@ class UsersController extends Controller
         $usuario = User::all();
         return $usuario;
     }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        print('se borro');
+    }
+    public function actualizarUsuario(Request $request){
+        $usuario = User::where('email','=', $request->email)->first();
+        $usuario->password = bcrypt($request->password);
+        $usuario->tipo_usuario = $request->tipo_usuario;
+        $usuario->nombres = $request->nombres;
+        $usuario->apellidos = $request->apellidos;
+        $usuario->telefono = $request->telefono;
+        $usuario->update();
+        return $usuario;
+    }
 }

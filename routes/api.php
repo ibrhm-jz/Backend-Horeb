@@ -20,11 +20,13 @@ Route::post('/registro', 'UsersController@register');
 Route::get('/user/{id}', 'UsersController@show', function (Request $request) {
     return $request->Users();
 });
+Route::put('/actualizar-usuario', 'UsersController@actualizarUsuario');
 
 Route::get('/user', 'UsersController@showAll', function (Request $request) {
     return $request->Users();
 });
 Route::middleware('jwt.auth:api')->post('/buscar-empleado', 'UsersController@buscarUser');
+Route::middleware('jwt.auth:api')->delete('borrar-empleado/{id}', 'UsersController@destroy');
 //---------------------Empresa-------------------
 
 Route::middleware('jwt.auth:api')->get('/empresa', 'EmpresaController@show', function (Request $request) {
