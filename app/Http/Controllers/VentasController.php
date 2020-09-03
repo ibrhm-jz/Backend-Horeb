@@ -24,7 +24,6 @@ class VentasController extends Controller
         $venta->medida = $json[$i]['medida'];
         $venta->descripcion = $json[$i]['descripcion'];
         $venta->total= $json[$i]['total'];
-        $venta->empresa_id= $json[$i]['empresa_id'];
         $venta->status= $json[$i]['status'];
         $venta->costo_flete= $json[$i]['costo_flete'];
         $venta->ganancia= $json[$i]['ganancia'];

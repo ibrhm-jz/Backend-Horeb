@@ -43,18 +43,20 @@ class ClientesController extends Controller
         print('se borro');
     }
 
-    public function show(){
+    public function show()
+    {
         $clientes = Clientes::all();
         return $clientes;
     }
 
-    public function buscarClientes(Request $request){
-        $clientes = Clientes::select('clientes.*')->where('nombres','like',"%$request->nombre%")->get();
-        return $clientes;
-
-    }
     public function showId($id){
         $clientes = Clientes::find($id);
         return $clientes;
+    }
+
+    public function buscarClientes(Request $request){
+        $clientes= Clientes::where('nombres','ilike',"$request->nombres%")->get();
+        return $clientes;
+
     }
 }

@@ -49,7 +49,7 @@ Route::middleware('jwt.auth:api')->put('/actualizar-producto/{id}', 'ProductosCo
     return $request->Productos();
 });
 Route::middleware('jwt.auth:api')->delete('borrar-producto/{id}', 'ProductosController@destroy');
-
+Route::middleware('jwt.auth:api')->post('/producto-filtro-categoria', 'ProductosController@filtroCategoria');
 
 //--------------------CLientes---------------------
 Route::middleware('jwt.auth:api')->post('/registro-cliente', 'ClientesController@register');

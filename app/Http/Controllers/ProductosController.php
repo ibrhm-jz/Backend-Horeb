@@ -50,8 +50,14 @@ class ProductosController extends Controller
 
 
     public function buscarProductos(Request $request){
-        $producto = Productos::select('productos.*')->where('nombre','like',"%$request->nombre%")->get();
+        $producto = Productos::where('nombre','ilike',"$request->nombre%")->get();
         return $producto;
+
+    }
+    public function filtroCategoria(Request $request){ 
+        $producto = Productos::where('categoria','=',$request->categoria)->get();
+        return $producto;
+       
 
     }
 }
