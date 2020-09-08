@@ -26,7 +26,7 @@ class UsersController extends Controller
     }
 
     public function buscarUser(Request $request){
-        $usuario = User::select('users.*')->where('nombres','like',"%$request->nombre%")->get();
+        $usuario = User::where('nombres','ilike',"$request->nombres%")->get();
         return $usuario;
 
     }

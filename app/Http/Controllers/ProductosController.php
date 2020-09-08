@@ -38,7 +38,7 @@ class ProductosController extends Controller
         return $productos;
     }
     public function show(){
-        $productos = Productos::all();
+        $productos = Productos::all()->sortByDesc('nombre');
         return $productos;
     }
     public function destroy($id)
@@ -50,7 +50,7 @@ class ProductosController extends Controller
 
 
     public function buscarProductos(Request $request){
-        $producto = Productos::where('nombre','ilike',"$request->nombre%")->get();
+        $producto = Productos::where('nombre','ilike',"$request->nombre%")->orderBy('nombre')->get();
         return $producto;
 
     }
