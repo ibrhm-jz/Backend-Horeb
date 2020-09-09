@@ -18,9 +18,7 @@ class Productos extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('tipo');
             $table->string('medida');
-            $table->string('descripcion');
             $table->string('categoria');
             $table->float('precio_unitario');  
             $table->float('cantidad_existencia');          

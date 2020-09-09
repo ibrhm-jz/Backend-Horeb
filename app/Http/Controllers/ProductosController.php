@@ -11,9 +11,7 @@ class ProductosController extends Controller
         $productos = new Productos();
         #0 ES ACTIVO, 1 ES INACTIVO
         $productos->nombre = $request->nombre;
-        $productos->tipo =$request->tipo;
         $productos->medida = $request->medida;
-        $productos->descripcion = $request->descripcion;
         $productos->categoria = $request->categoria;
         $productos->precio_unitario = $request->precio_unitario;
         $productos->cantidad_existencia = $request->cantidad_existencia;
@@ -28,9 +26,7 @@ class ProductosController extends Controller
     {
         $productos = Productos::find($id);
         $productos->nombre = $request->nombre;
-        $productos->tipo = $request->tipo;
         $productos->medida = $request->medida;
-        $productos->descripcion = $request->descripcion;
         $productos->categoria = $request->categoria;
         $productos->precio_unitario = $request->precio_unitario;
         $productos->cantidad_existencia = $request->cantidad_existencia;
