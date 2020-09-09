@@ -34,7 +34,7 @@ class ProductosController extends Controller
         return $productos;
     }
     public function show(){
-        $productos = Productos::all()->sortByDesc('nombre');
+        $productos = Productos::orderBy('nombre')->all();
         return $productos;
     }
     public function destroy($id)
