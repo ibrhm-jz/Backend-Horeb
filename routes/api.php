@@ -78,3 +78,6 @@ Route::middleware('jwt.auth:api')->delete('borrar-entrega/{id}', 'EntregasContro
 
 //--------------------ventas--------------------
 Route::middleware('jwt.auth:api')->post('/registro-ventas', 'VentasController@register');
+Route::middleware('jwt.auth:api')->get('/no-cotizacion', 'VentasController@numeroCot', function (Request $request) {
+    return $request->Ventas();
+});

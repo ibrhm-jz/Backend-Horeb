@@ -31,9 +31,13 @@ class VentasController extends Controller
         $venta->user_id = $json[$i]['user_id'];
         $venta->no_venta = $num_venta_actual;
         $venta->save();
-        
        }
        $ventas = Ventas::all();
        return $ventas;
+    }
+
+    public function numeroCot(){
+        $ventas = Ventas::max('no_venta');
+        return $ventas;
     }
 }
