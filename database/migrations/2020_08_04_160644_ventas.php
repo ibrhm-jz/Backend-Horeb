@@ -24,11 +24,10 @@ class Ventas extends Migration
             $table->string('descripcion');
             $table->string('cantidad');
             $table->string('status');     
-            $table->string('total');
             $table->string('costo_flete');  
-            $table->string('ganancia');       
-            $table->integer('empresa_id')->unsigned();            
-            $table->foreign('empresa_id')->references('id')->on('empresas');
+            $table->string('ganancia');
+            $table->integer('producto_id')->unsigned();            
+            $table->foreign('producto_id')->references('id')->on('productos');       
             $table->integer('user_id')->unsigned();            
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

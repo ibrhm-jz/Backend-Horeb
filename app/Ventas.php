@@ -8,7 +8,7 @@ class Ventas extends Model
 {
     protected $fillable = [
         'id','no_venta','nombre','direccion', 'ciudad', 'medida','descripcion','status',
-        'costo_flete','ganancia','user_id'
+        'costo_flete','ganancia','user_id','producto_id'
     ];
     public function getJWTIdentifier()
     {
