@@ -9,7 +9,7 @@ class VentasController extends Controller
 {
     public function register(Request $request)
     {
-       $json = request()->all();
+        $json = request()->all();
        $num_venta_actual =  Ventas::max('no_venta');
        if($num_venta_actual==null){
            $num_venta_actual=1;
@@ -31,6 +31,7 @@ class VentasController extends Controller
         $venta->user_id = $json[$i]['user_id'];
         $venta->no_venta = $num_venta_actual;
         $venta->save();
+        
        }
        $ventas = Ventas::all();
        return $ventas;
