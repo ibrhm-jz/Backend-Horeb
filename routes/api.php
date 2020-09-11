@@ -48,6 +48,9 @@ Route::middleware('jwt.auth:api')->get('/productos', 'ProductosController@show',
 Route::middleware('jwt.auth:api')->put('/actualizar-producto/{id}', 'ProductosController@update', function (Request $request) {
     return $request->Productos();
 });
+Route::middleware('jwt.auth:api')->get('/productos/{id}', 'ProductosController@showId', function (Request $request) {
+    return $request->Clientes();
+});
 Route::middleware('jwt.auth:api')->delete('borrar-producto/{id}', 'ProductosController@destroy');
 Route::middleware('jwt.auth:api')->post('/producto-filtro-categoria', 'ProductosController@filtroCategoria');
 

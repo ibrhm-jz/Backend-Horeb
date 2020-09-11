@@ -37,6 +37,11 @@ class ProductosController extends Controller
         $productos = Productos::orderBy('nombre')->get();
         return $productos;
     }
+
+    public function showId($id){
+        $productos = Productos::find($id);
+        return $productos;
+    }
     public function destroy($id)
     {
         $producto = Productos::find($id);
