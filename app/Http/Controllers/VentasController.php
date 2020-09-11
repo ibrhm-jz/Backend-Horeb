@@ -39,6 +39,6 @@ class VentasController extends Controller
     public function numeroCot(){
         $ventas = Ventas::max('no_venta');
            
-        return response()->json(['no-cotizacion' => $ventas]);
+        return response()->json(['nocotizacion' => $ventas]);
     }
 }
