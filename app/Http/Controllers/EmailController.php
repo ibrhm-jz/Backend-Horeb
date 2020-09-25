@@ -13,7 +13,7 @@ class EmailController extends Controller
     public function solicitarActivacion(Request $request){
         $mensaje = $request->mensaje;
         $correo = $request->correo;
-        Mail::to($correo)->send(new sendMail($mensaje,$correo));
+        Mail::to("tuberia_horeb@hotmail.com")->send(new sendMail($mensaje,$correo));
         
         return response()->json([
             'mensaje' => $mensaje
