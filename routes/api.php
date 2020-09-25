@@ -84,3 +84,5 @@ Route::middleware('jwt.auth:api')->post('/registro-ventas', 'VentasController@re
 Route::middleware('jwt.auth:api')->get('/no-cotizacion', 'VentasController@numeroCot', function (Request $request) {
     return $request->Ventas();
 });
+
+Route::post('/email', 'EmailController@solicitarActivacion');
