@@ -25,6 +25,7 @@ class Ventas extends Migration
             $table->string('cantidad');
             $table->string('status');     
             $table->string('costo_flete');  
+            $table->string('precio_unitario');  
             $table->string('ganancia');
             $table->integer('producto_id')->unsigned();            
             $table->foreign('producto_id')->references('id')->on('productos');       

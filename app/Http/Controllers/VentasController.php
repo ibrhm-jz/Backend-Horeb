@@ -27,6 +27,7 @@ class VentasController extends Controller
         $venta->status= $json[$i]['status'];
         $venta->costo_flete= $json[$i]['costo_flete'];
         $venta->ganancia= $json[$i]['ganancia'];
+        $venta->precio_unitario= $json[$i]['precio_unitario'];
         $venta->cantidad = $json[$i]['cantidad'];
         $venta->user_id = $json[$i]['user_id'];
         $venta->no_venta = $num_venta_actual;
@@ -40,5 +41,12 @@ class VentasController extends Controller
         $ventas = Ventas::max('no_venta');
            
         return response()->json(['nocotizacion' => $ventas]);
+    }
+
+    public function searchVenta(Request $request){ 
+        $venta = Ventas::where('no_venta','=',$request->no_venta)->get();
+        return $venta;
+       
+
     }
 }
