@@ -21,6 +21,7 @@ class VentasController extends Controller
         $venta->nombre = $json[$i]['nombre'];
         $venta->direccion = $json[$i]['direccion'];
         $venta->ciudad = $json[$i]['ciudad'];
+        $venta->direccion = $json[$i]['telefono'];
         $venta->medida = $json[$i]['medida'];
         $venta->descripcion = $json[$i]['descripcion'];
         $venta->producto_id = $json[$i]['producto_id'];
@@ -48,5 +49,31 @@ class VentasController extends Controller
         return $venta;
        
 
+    }
+
+    public function update(Request $request, $id)
+    {
+        $json = request()->all();
+        $venta = Ventas::where('no_venta','=',$request->$id);
+        for ($i=0; $i <sizeof($json) ; $i++) { 
+            $venta = Ventas::where('no_venta','=',$request->$id);
+            $venta->nombre = $json[$i]['nombre'];
+            $venta->direccion = $json[$i]['direccion'];
+            $venta->ciudad = $json[$i]['ciudad'];
+            $venta->direccion = $json[$i]['telefono'];
+            $venta->medida = $json[$i]['medida'];
+            $venta->descripcion = $json[$i]['descripcion'];
+            $venta->producto_id = $json[$i]['producto_id'];
+            $venta->status= $json[$i]['status'];
+            $venta->costo_flete= $json[$i]['costo_flete'];
+            $venta->ganancia= $json[$i]['ganancia'];
+            $venta->precio_unitario= $json[$i]['precio_unitario'];
+            $venta->cantidad = $json[$i]['cantidad'];
+            $venta->user_id = $json[$i]['user_id'];
+            $venta->no_venta = $num_venta_actual;
+            $venta->update();
+           }
+       
+        return $venta;
     }
 }

@@ -20,6 +20,7 @@ class Ventas extends Migration
             $table->string('nombre');
             $table->string('direccion');
             $table->string('ciudad');
+            $table->string('telefono');
             $table->string('medida');
             $table->string('descripcion');
             $table->string('cantidad');

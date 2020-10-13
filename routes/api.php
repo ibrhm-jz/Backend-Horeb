@@ -86,3 +86,6 @@ Route::middleware('jwt.auth:api')->get('/no-cotizacion', 'VentasController@numer
 });
 Route::middleware('jwt.auth:api')->post('/buscar-venta', 'VentasController@searchVenta');
 Route::post('/email', 'EmailController@solicitarActivacion');
+Route::middleware('jwt.auth:api')->put('/actualizar-venta/{id}', 'VentasController@update', function (Request $request) {
+    return $request->Entregas();
+});
