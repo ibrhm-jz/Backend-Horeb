@@ -51,12 +51,20 @@ class VentasController extends Controller
 
     }
 
+    public function destroy($id){ 
+        $venta = Ventas::where('no_venta','=',$id)->delete();
+        print('se borro');
+        
+       
+
+    }
+
     public function update(Request $request, $id)
     {
         $json = request()->all();
         $venta = Ventas::where('no_venta','=',$request->$id);
         for ($i=0; $i <sizeof($json) ; $i++) { 
-            $venta = Ventas::where('no_venta','=',$request->$id);
+            
             $venta->nombre = $json[$i]['nombre'];
             $venta->direccion = $json[$i]['direccion'];
             $venta->ciudad = $json[$i]['ciudad'];
@@ -70,7 +78,6 @@ class VentasController extends Controller
             $venta->precio_unitario= $json[$i]['precio_unitario'];
             $venta->cantidad = $json[$i]['cantidad'];
             $venta->user_id = $json[$i]['user_id'];
-            $venta->no_venta = $num_venta_actual;
             $venta->update();
            }
        
