@@ -38,6 +38,33 @@ class VentasController extends Controller
        return $ventas;
     }
 
+
+    public function rudate(Request $request)
+    {
+        $json = request()->all();
+      
+       for ($i=0; $i <sizeof($json) ; $i++) { 
+        $venta = new Ventas();
+        $venta->no_venta =$json[$i]['no_venta'];
+        $venta->nombre = $json[$i]['nombre'];
+        $venta->direccion = $json[$i]['direccion'];
+        $venta->ciudad = $json[$i]['ciudad'];
+        $venta->direccion = $json[$i]['telefono'];
+        $venta->medida = $json[$i]['medida'];
+        $venta->descripcion = $json[$i]['descripcion'];
+        $venta->producto_id = $json[$i]['producto_id'];
+        $venta->status= $json[$i]['status'];
+        $venta->costo_flete= $json[$i]['costo_flete'];
+        $venta->ganancia= $json[$i]['ganancia'];
+        $venta->precio_unitario= $json[$i]['precio_unitario'];
+        $venta->cantidad = $json[$i]['cantidad'];
+        $venta->user_id = $json[$i]['user_id'];
+      
+        $venta->save();
+       }
+       $ventas = Ventas::all();
+       return $ventas;
+    }
     public function numeroCot(){
         $ventas = Ventas::max('no_venta');
            
