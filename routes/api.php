@@ -68,7 +68,7 @@ Route::middleware('jwt.auth:api')->get('/cliente/{id}', 'ClientesController@show
 });
 Route::middleware('jwt.auth:api')->delete('borrar-cliente/{id}', 'ClientesController@destroy');
 Route::middleware('jwt.auth:api')->post('/buscar-cliente', 'ClientesController@buscarClientes');
-
+Route::middleware('jwt.auth:api')->post('/mis-clientes', 'ClientesController@MisClientes');
 //--------------------Entregas---------------------
 Route::middleware('jwt.auth:api')->post('/registro-entrega', 'EntregasController@register');
 Route::middleware('jwt.auth:api')->put('/actualizar-entrega/{id}', 'EntregasController@update', function (Request $request) {
@@ -90,3 +90,4 @@ Route::middleware('jwt.auth:api')->put('/actualizar-venta/{id}', 'VentasControll
     return $request->Ventas();
 });
 Route::middleware('jwt.auth:api')->delete('borrar-venta/{id}', 'VentasController@destroy');
+Route::middleware('jwt.auth:api')->post('/update', 'VentasController@updated');

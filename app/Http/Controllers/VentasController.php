@@ -39,7 +39,7 @@ class VentasController extends Controller
     }
 
 
-    public function rudate(Request $request)
+    public function updated(Request $request)
     {
         $json = request()->all();
       
@@ -49,7 +49,7 @@ class VentasController extends Controller
         $venta->nombre = $json[$i]['nombre'];
         $venta->direccion = $json[$i]['direccion'];
         $venta->ciudad = $json[$i]['ciudad'];
-        $venta->direccion = $json[$i]['telefono'];
+        $venta->telefono = $json[$i]['telefono'];
         $venta->medida = $json[$i]['medida'];
         $venta->descripcion = $json[$i]['descripcion'];
         $venta->producto_id = $json[$i]['producto_id'];
@@ -95,7 +95,7 @@ class VentasController extends Controller
             $venta->nombre = $json[$i]['nombre'];
             $venta->direccion = $json[$i]['direccion'];
             $venta->ciudad = $json[$i]['ciudad'];
-            $venta->direccion = $json[$i]['telefono'];
+            $venta->telefono = $json[$i]['telefono'];
             $venta->medida = $json[$i]['medida'];
             $venta->descripcion = $json[$i]['descripcion'];
             $venta->producto_id = $json[$i]['producto_id'];

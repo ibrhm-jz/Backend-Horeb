@@ -59,4 +59,10 @@ class ClientesController extends Controller
         return $clientes;
 
     }
+    public function MisClientes(Request $request){
+        $clientes = Clientes::where('users_id','=',$request->user_id)->get();
+        return $clientes;
+        
+
+    }
 }
