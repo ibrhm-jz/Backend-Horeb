@@ -45,7 +45,10 @@ class ClientesController extends Controller
 
     public function show()
     {
-        $clientes = Clientes::all();
+        $clientes =  Clientes::select('clientes.nombres','clientes.apellidos','clientes.direccion',
+        'clientes.telefono','clientes.correo','clientes.empresa','users.nombres AS vendedor')
+        ->join('users', 'users.id', '=', 'clientes.users_id')
+        ->get();
         return $clientes;
     }
 
@@ -55,12 +58,20 @@ class ClientesController extends Controller
     }
 
     public function buscarClientes(Request $request){
-        $clientes= Clientes::where('nombres','ilike',"$request->nombres%")->get();
+        $clientes =  Clientes::select('clientes.nombres','clientes.apellidos','clientes.direccion',
+        'clientes.telefono','clientes.correo','clientes.empresa','users.nombres AS vendedor')
+        ->join('users', 'users.id', '=', 'clientes.users_id')
+        ->where('clientes.nombres','ilike',"$request->nombres%")
+        ->get();
         return $clientes;
 
     }
     public function MisClientes(Request $request){
-        $clientes = Clientes::where('users_id','=',$request->user_id)->get();
+        
+        $clientes =  Clientes::select('clientes.nombres','clientes.apellidos','clientes.direccion',
+        'clientes.telefono','clientes.correo','clientes.empresa','users.nombres AS vendedor')
+        ->join('users', 'users.id', '=', 'clientes.users_id')
+        ->where('clientes.users_id','=',$request->user_id)->get();
         return $clientes;
         
 

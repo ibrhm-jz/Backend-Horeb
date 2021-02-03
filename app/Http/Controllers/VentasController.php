@@ -59,7 +59,7 @@ class VentasController extends Controller
         $venta->precio_unitario= $json[$i]['precio_unitario'];
         $venta->cantidad = $json[$i]['cantidad'];
         $venta->user_id = $json[$i]['user_id'];
-      
+
         $venta->save();
        }
        $ventas = Ventas::all();
@@ -86,10 +86,10 @@ class VentasController extends Controller
 
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $json = request()->all();
-        $venta = Ventas::where('no_venta','=',$request->$id);
+        $venta = Ventas::where('no_venta','=',$request->no_venta);
         for ($i=0; $i <sizeof($json) ; $i++) { 
             
             $venta->nombre = $json[$i]['nombre'];
