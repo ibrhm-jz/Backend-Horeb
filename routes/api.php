@@ -91,3 +91,17 @@ Route::middleware('jwt.auth:api')->put('/actualizar-venta/{id}', 'VentasControll
 });
 Route::middleware('jwt.auth:api')->delete('borrar-venta/{id}', 'VentasController@destroy');
 Route::middleware('jwt.auth:api')->post('/update', 'VentasController@updated');
+
+//--------------------Inventario--------------------
+Route::middleware('jwt.auth:api')->post('/registro-inventario', 'InventarioController@register');
+Route::middleware('jwt.auth:api')->put('/actualizar-inventario/{id}', 'InventarioController@update', function (Request $request) {
+    return $request->Inventario();
+});
+Route::middleware('jwt.auth:api')->get('/inventario', 'InventarioController@show', function (Request $request) {
+    return $request->Inventario();
+});
+Route::middleware('jwt.auth:api')->delete('borrar-inventario/{id}', 'InventarioController@destroy');
+Route::middleware('jwt.auth:api')->post('/buscar-inventario', 'InventarioController@buscarInventario');
+Route::middleware('jwt.auth:api')->get('/inventario/{id}', 'InventarioController@showId', function (Request $request) {
+    return $request->Inventario();
+});
