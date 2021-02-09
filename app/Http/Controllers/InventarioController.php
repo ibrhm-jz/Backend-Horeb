@@ -30,7 +30,7 @@ class InventarioController extends Controller
     }
 
     public function show(){
-        $inventario = Inventario::orderBy('concepto')->get();
+        $inventario = Inventario::all();
         return $inventario;
     }
 
