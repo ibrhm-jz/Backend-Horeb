@@ -15,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', 'Login@login');
 
+//---------------------Categorias-------------------
+Route::post('/anadir-categoria', 'CategoriasController@registrarCategoria');
+Route::put('/editar-categoria/{id}', 'CategoriasController@editarCategoria');
+Route::get('/obtener-categoria', 'CategoriasController@obtenerListaCategoria');
+Route::get('/obtener-categoria/{id}', 'CategoriasController@obtenerUnaCategoria');
+Route::delete('/eliminar-categoria/{id}', 'CategoriasController@eliminarCategoria');
+
 //---------------------Users-------------------
 Route::post('/registro', 'UsersController@register');
 Route::get('/user/{id}', 'UsersController@show', function (Request $request) {
