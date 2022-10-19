@@ -46,7 +46,7 @@ class InventarioController extends Controller
         print('se borro');
     }
     public function buscarInventario(Request $request){
-        $inventario = Inventario::where('concepto','ilike',"$request->concepto%")->orderBy('concepto')->get();
+        $inventario = Inventario::where('concepto','like',"$request->concepto%")->orderBy('concepto')->get();
         return $inventario;
 
     }

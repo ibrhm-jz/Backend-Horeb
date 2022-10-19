@@ -61,7 +61,7 @@ class ClientesController extends Controller
         $clientes =  Clientes::select('clientes.nombres','clientes.apellidos','clientes.direccion',
         'clientes.telefono','clientes.correo','clientes.empresa','users.nombres AS vendedor')
         ->join('users', 'users.id', '=', 'clientes.users_id')
-        ->where('clientes.nombres','ilike',"$request->nombres%")
+        ->where('clientes.nombres','like',"$request->nombres%")
         ->get();
         return $clientes;
 

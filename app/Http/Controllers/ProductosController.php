@@ -51,7 +51,7 @@ class ProductosController extends Controller
 
 
     public function buscarProductos(Request $request){
-        $producto = Productos::where('nombre','ilike',"$request->nombre%")->orderBy('nombre')->get();
+        $producto = Productos::where('nombre','like',"$request->nombre%")->orderBy('nombre')->get();
         return $producto;
 
     }
