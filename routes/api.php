@@ -60,6 +60,8 @@ Route::middleware('jwt.auth:api')->get('/productos/{id}', 'ProductosController@s
 });
 Route::middleware('jwt.auth:api')->delete('borrar-producto/{id}', 'ProductosController@destroy');
 Route::middleware('jwt.auth:api')->post('/producto-filtro-categoria', 'ProductosController@filtroCategoria');
+Route::put('/cambiar-precio', 'ProductosController@cambiarPrecio');
+
 
 //--------------------CLientes---------------------
 Route::middleware('jwt.auth:api')->post('/registro-cliente', 'ClientesController@register');
