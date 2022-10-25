@@ -151,7 +151,7 @@ class ProductosController extends Controller
         }
     }
 
-    public function cambiarPrecioPorCategoria(Resquest $resquest){
+    public function cambiarPrecioPorCategoria(Request $request){
         try {
             $productos = Productos::where('categoria', '=', $request->categoria)->get();
             foreach ($productos as $index => $producto) {

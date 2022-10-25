@@ -68,6 +68,7 @@ class ClientesController extends Controller
            'clientes.telefono','clientes.correo','clientes.empresa','users.nombres AS vendedor')
            ->join('users', 'users.id', '=', 'clientes.users_id')
            ->get();
+           
            return $clientes;
         } catch (\Throwable $th) {
             return response()->json([
@@ -89,7 +90,7 @@ class ClientesController extends Controller
 
     public function buscarClientes(Request $request){
         try{
-           $clientes =  Clientes::select('clientes.nombres','clientes.apellidos','clientes.direccion',
+           $clientes =  Clientes::select('clientes.nombres','clientes.id','clientes.apellidos','clientes.direccion',
            'clientes.telefono','clientes.correo','clientes.empresa','users.nombres AS vendedor')
            ->join('users', 'users.id', '=', 'clientes.users_id')
            ->where('clientes.nombres','like',"$request->nombres%")
