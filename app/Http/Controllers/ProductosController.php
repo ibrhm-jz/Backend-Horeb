@@ -110,20 +110,65 @@ class ProductosController extends Controller
         try {
             $productos = Productos::all();
             foreach ($productos as $index => $producto) {
-    
-            //    $producto->precio_unitario = $producto->precio_unitario + $request->precio_unitario;
-            //    $producto->update();
-            $porcentajedecimal = $request->porcentaje/100;
-            $cantidadsumar = $producto->precio_unitario * $porcentajedecimal;
-            $producto->precio_unitario = $producto->precio_unitario + $cantidadsumar;
-            $producto->update();
+                if ($request->precio_unitario != null) {
+                    $producto->precio_unitario = $producto->precio_unitario + $request->precio_unitario;
+                    $producto->update();
+                } else {
+                    $porcentajedecimal = $request->porcentaje/100;
+                    $cantidadsumar = $producto->precio_unitario * $porcentajedecimal;
+                    $producto->precio_unitario = $producto->precio_unitario + $cantidadsumar;
+                    $producto->update();
+                }
             } return response("Editado con exito", 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => $th->getMessage()
             ], 404);
-        }
-       
+        }   
+        
+        
+    }
 
+    public function cambiarPrecioPorLista(Request $request){
+        try {
+            foreach ($request->lista as $index => $idProducto) {
+                $miproducto = Productos::find($idProducto);
+                if ($request->precio_unitario != null) {
+                    $miproducto->precio_unitario = $miproducto->precio_unitario + $request->precio_unitario;
+                    $miproducto->update();
+                } else {
+                    $porcentajedecimal = $request->porcentaje/100;
+                    $cantidadsumar = $miproducto->precio_unitario * $porcentajedecimal;
+                    $miproducto->precio_unitario = $miproducto->precio_unitario + $cantidadsumar;
+                    $miproducto->update();
+                }
+                
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => $th->getMessage()
+            ], 404);
+        }
+    }
+
+    public function cambiarPrecioPorCategoria(Resquest $resquest){
+        try {
+            $productos = Productos::where('categoria', '=', $request->categoria)->get();
+            foreach ($productos as $index => $producto) {
+                if ($request->precio_unitario != null) {
+                    $producto->precio_unitario = $producto->precio_unitario + $request->precio_unitario;
+                    $producto->update();
+                } else {
+                    $porcentajedecimal = $request->porcentaje/100;
+                    $cantidadsumar = $producto->precio_unitario * $porcentajedecimal;
+                    $producto->precio_unitario = $producto->precio_unitario + $cantidadsumar;
+                    $producto->update();
+                }                
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => $th->getMessage()
+            ], 404);
+        }
     }
 }
