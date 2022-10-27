@@ -41,9 +41,13 @@ class UsersController extends Controller
     public function buscarUser(Request $request)
     {
         try {
-            $usuario = User::where('nombres', 'like', "$request->nombres%")->get();
+            $nombre = strtolower($request->nombres);
+            $usuario = User::whereRaw('lower(nombres) like (?)',["{$nombre}%"])->get();
+            
+            // where('lower(nombres)', 'like', "$request->nombres%")->get();
             return $usuario;
         } catch (\Throwable $th) {
+            error_log($th->getMessage());
             return response()->json([
                 'message' => $th->getMessage()
             ], 404);

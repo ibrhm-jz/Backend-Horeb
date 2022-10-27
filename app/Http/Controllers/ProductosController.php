@@ -86,7 +86,11 @@ class ProductosController extends Controller
     public function buscarProductos(Request $request)
     {
         try {
-            $producto = Productos::where('nombre', 'like', "$request->nombre%")->orderBy('nombre')->get();
+            $nombre = strtolower($request->nombre);
+            $producto = Productos::whereRaw('lower(nombre) like (?)',["{$nombre}%"])
+            // where('nombre', 'like', "$request->nombre%")
+            ->orderBy('nombre')
+            ->get();
             return $producto;
         } catch (\Throwable $th) {
             return response()->json([

@@ -90,10 +90,12 @@ class ClientesController extends Controller
 
     public function buscarClientes(Request $request){
         try{
+           $nombre = strtolower($request->nombres);
            $clientes =  Clientes::select('clientes.nombres','clientes.id','clientes.apellidos','clientes.direccion',
            'clientes.telefono','clientes.correo','clientes.empresa','users.nombres AS vendedor')
            ->join('users', 'users.id', '=', 'clientes.users_id')
-           ->where('clientes.nombres','like',"$request->nombres%")
+           ->whereRaw('lower(clientes.nombres) like (?)',["{$nombre}%"])
+        //    ->where('clientes.nombres','like',"$nombre%")
            ->get();
            return $clientes;
         } catch (\Throwable $th) {

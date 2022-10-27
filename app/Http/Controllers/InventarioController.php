@@ -81,7 +81,11 @@ class InventarioController extends Controller
     public function buscarInventario(Request $request)
     {
         try {
-            $inventario = Inventario::where('concepto', 'like', "$request->concepto%")->orderBy('concepto')->get();
+            $nombre = strtolower($request->concepto);
+            $inventario = Inventario::whereRaw('lower(concepto) like (?)',["{$nombre}%"])
+            //where('concepto', 'like', "$request->concepto%")
+            ->orderBy('concepto')
+            ->get();
             return $inventario;
         } catch (\Throwable $th) {
             return response()->json([
