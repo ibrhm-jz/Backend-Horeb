@@ -62,7 +62,9 @@ Route::middleware('jwt.auth:api')->delete('borrar-producto/{id}', 'ProductosCont
 Route::middleware('jwt.auth:api')->post('/producto-filtro-categoria', 'ProductosController@filtroCategoria');
 Route::put('/cambiar-precio', 'ProductosController@cambiarPrecio');
 Route::put('/cambiar-precio-por-lista', 'ProductosController@cambiarPrecioPorLista');
-Route::put('/cambiar-precio-por-categoria', 'ProductosController@cambiarPrecioPorLista');
+Route::put('/cambiar-precio-por-categoria', 'ProductosController@cambiarPrecioPorCategoria');
+Route::get('/convertir-producto', 'ProductosController@convertirDatos');
+
 
 //--------------------CLientes---------------------
 Route::middleware('jwt.auth:api')->post('/registro-cliente', 'ClientesController@register');

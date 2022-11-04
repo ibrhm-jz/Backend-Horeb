@@ -112,6 +112,7 @@ class ProductosController extends Controller
 
     public function cambiarPrecio(Request $request){
         try {
+            set_time_limit(0);
             $productos = Productos::all();
             foreach ($productos as $index => $producto) {
                 if ($request->precio_unitario != null) {
@@ -148,6 +149,7 @@ class ProductosController extends Controller
                 }
                 
             }
+            return response("Editado con exito", 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => $th->getMessage()
@@ -174,5 +176,26 @@ class ProductosController extends Controller
                 'message' => $th->getMessage()
             ], 404);
         }
+    }
+    public function convertirDatos(){
+        set_time_limit(0);
+        $reservada ="-TRIAL-";
+        $productos = Productos::all();
+        foreach($productos as $index  =>$producto){
+            if(str_contains($producto->nombre,"TRIAL")){
+                for($i = 0; $i<300;$i++){
+                    $palabra = $i.$reservada;
+                    $result = preg_replace("/".$palabra."/m","", $producto->nombre);
+                    $producto->nombre= $result;
+                    $producto->update();
+                    error_log($result);
+                }
+    
+            }
+            // $search= Productos::where('nombre', '=', $palabra)->get();
+
+        }
+       
+        return response("Editado con exito", 200);
     }
 }
